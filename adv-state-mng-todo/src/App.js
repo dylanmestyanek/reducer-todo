@@ -1,18 +1,39 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import { reducer } from "./reducers/reducer"
 import { initialState } from "./reducers/reducer"
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [todo, setTodo] = useState('')
+
+  const handleChange = (e) => {
+    setTodo(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    todo !== '' && dispatch({ 
+      type: 'ADD_TODO', 
+      payload: { 
+        item: todo, 
+        completed: false, 
+        id: Date.now() 
+      }
+    })
+    setTodo('');
+  }
 
   return (
-    <div className="App">
-      {
-        // dispatch({ type: 'ADD_TODO'})
-        <button onClick={() => dispatch({ type: 'ADD_TODO', payload: { item: 'test', completed: false, id: 3255436 }})}></button>
-      }
-    </div>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text"
+          name='todo'
+          value={todo}
+          onChange={(e) => handleChange(e)}
+        />
+        <button type="submit"></button>
+      </form>
   );
 }
 

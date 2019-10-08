@@ -7,7 +7,6 @@ export const initialState = [{
 export const reducer = (state, action) => {
     switch (action.type){
         case 'ADD_TODO':
-            console.log('working')
             console.log(state)
             return [...state, action.payload]
         default:

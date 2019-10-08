@@ -24,6 +24,7 @@ function App() {
       <TodoForm 
         handleChange={handleChange} 
         handleSubmit={handleSubmit}
+        dispatch={dispatch}
         todo={todo}
       />
       <TodoList 

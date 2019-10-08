@@ -1,11 +1,9 @@
-import React, { useReducer } from "react"
-import { initialState, reducer } from "../reducers/reducer"
+import React from "react"
 
 const TodoList = ({ state, dispatch }) => {
 
     const toggleTodo = (task) => {
         dispatch({ type: "TOGGLE_TODO", payload: task.id})
-        console.log(state)
     }
 
     return (
@@ -22,7 +20,3 @@ const TodoList = ({ state, dispatch }) => {
 }
 
 export default TodoList
-
-const todoStyle = {
-
-}

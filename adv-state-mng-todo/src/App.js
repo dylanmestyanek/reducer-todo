@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import './App.css';
-import { reducer } from "./reducers/reducer"
-import { initialState } from "./reducers/reducer"
+import { initialState, reducer  } from "./reducers/reducer"
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
@@ -16,14 +15,7 @@ function App() {
   // Runs dispatch action, adding todo object to initialState of todo isn't empty
   const handleSubmit = (e) => {
     e.preventDefault();
-    todo !== '' && dispatch({ 
-      type: 'ADD_TODO', 
-      payload: { 
-        item: todo, 
-        completed: false, 
-        id: Date.now() 
-      }
-    })
+    todo !== '' && dispatch({ type: 'ADD_TODO', payload: todo })
     setTodo('');
   }
 
@@ -34,7 +26,10 @@ function App() {
         handleSubmit={handleSubmit}
         todo={todo}
       />
-      <TodoList />
+      <TodoList 
+        state={state}
+        dispatch={dispatch}
+      />
     </div>
   );
 }

@@ -1,12 +1,28 @@
-import React from "react"
-import { initialState } from "../reducers/reducer"
+import React, { useReducer } from "react"
+import { initialState, reducer } from "../reducers/reducer"
 
-const TodoList = () => {
+const TodoList = ({ state, dispatch }) => {
+
+    const toggleTodo = (task) => {
+        dispatch({ type: "TOGGLE_TODO", payload: task.id})
+        console.log(state)
+    }
+
     return (
-        initialState.map(todo => 
-            <p> {todo.item} </p>
-        )
+        <div>
+            {
+                state.map(task => <p 
+                        style={{textDecoration: task.completed ? "line-through" : "none" }} 
+                        onClick={() => toggleTodo(task)}>
+                        {task.item}
+                    </p>)
+            }
+        </div>
     );
 }
 
 export default TodoList
+
+const todoStyle = {
+
+}

@@ -9,7 +9,7 @@ const TodoForm = ({ handleChange, handleSubmit, todo }) => {
             value={todo}
             onChange={(e) => handleChange(e)}
             />
-            <button type="submit"></button>
+            <button type="submit">Add Todo</button>
         </form>
     );
 }

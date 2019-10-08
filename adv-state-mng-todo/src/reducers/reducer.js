@@ -9,6 +9,11 @@ export const reducer = (state, action) => {
         case 'ADD_TODO':
             console.log(state)
             return [...state, action.payload]
+        case 'TOGGLE_TODO':
+            const item = state.filter(task => 
+                task.id === action.payload.id
+            )
+            console.log(item)
         default:
             return state;
     }
